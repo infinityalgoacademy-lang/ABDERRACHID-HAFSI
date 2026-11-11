@@ -21,17 +21,24 @@ import {
   IconSprout,
   IconStar,
   IconTag,
+  IconTelegram,
   IconUser,
   LogoMark,
 } from "@/components/icons";
 import { CopyField } from "@/components/copy-field";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 type IconType = ComponentType<SVGProps<SVGSVGElement>>;
 
 /* ——————————————————— بيانات ثابتة ——————————————————— */
 
-const PHONE_DISPLAY = "+213 795 975 712";
-const WA_LINK = `https://wa.me/213795975712?text=${encodeURIComponent(
+const TELEGRAM_HANDLE = "@King_arius_dz";
+const TG_LINK = `https://t.me/King_arius_dz?text=${encodeURIComponent(
   "مرحباً، أريد التسجيل في دورة البرمجة والذكاء الاصطناعي في عالم التداول."
 )}`;
 
@@ -141,6 +148,66 @@ const DETAILS: { Icon: IconType; label: string; value: string; highlight?: boole
   { Icon: IconTag, label: "السعر", value: "80$", highlight: true },
 ];
 
+const CURRICULUM: { month: string; phase: string; weeks: string[] }[] = [
+  {
+    month: "الشهر الأول",
+    phase: "الأساسيات والبيانات",
+    weeks: [
+      "تثبيت بيئة العمل خطوة بخطوة (بايثون + محرر VS Code)، التعامل مع الطرفية، وكتابة أول برنامج لك وتشغيله",
+      "المتغيرات وأنواع البيانات، الجمل الشرطية، الحلقات، وكتابة دوالك الخاصة",
+      "مكتبة Pandas: قراءة ملفات CSV والجداول، الفرز والفلترة، والتعامل مع الأعمدة",
+      "سحب بيانات أسعار حقيقية من مصادر مجانية، تنظيف القيم الناقصة والشاذة، وتجهيز جداول جاهزة للتحليل",
+    ],
+  },
+  {
+    month: "الشهر الثاني",
+    phase: "المؤشرات والذكاء الاصطناعي",
+    weeks: [
+      "حساب المتوسطات المتحركة (MA · EMA) ومؤشر القوة النسبية RSI بالكود، وفهم دلالتها خلف الرسم البياني",
+      "بناء مؤشر مخصص بمعادلاتك أنت، رسمه على بيانات السوق، وإضافة إشارات دخول وخروج واضحة عليه",
+      "توظيف الذكاء الاصطناعي في قراءة البيانات: من نماذج تعلم الآلة إلى المساعدات الذكية في اكتشاف الأنماط واقتراح القرارات",
+      "أتمتة المهام المتكررة: سكربتات تحدّث البيانات وتفحص شروطك وترسل التقارير تلقائياً",
+    ],
+  },
+  {
+    month: "الشهر الثالث",
+    phase: "الاختبار والمشاريع",
+    weeks: [
+      "فهم مفهوم Backtesting: اختبار استراتيجيتك على بيانات تاريخية قبل المخاطرة بمال حقيقي، وبناء محرك اختبار بسيط خاص بك",
+      "قياس الأداء والمخاطر بعين خبير: نسبة الربح، أقصى تراجع (Drawdown)، وسلاسل الخسائر",
+      "مشروع متكامل تحت إشراف المدرّب: من الفكرة إلى كود يعمل فعلياً على بيانات حقيقية",
+      "عرض مشروعك أمام المجموعة مع ملاحظات عملية، وخارطة طريق واضحة لمواصلة التطور ذاتياً بعد انتهاء الدورة",
+    ],
+  },
+];
+
+const FAQ: { q: string; a: string }[] = [
+  {
+    q: "هل أحتاج خبرة سابقة في البرمجة؟",
+    a: "لا. الدورة تبدأ من الصفر تماماً: من تثبيت الأدوات وكتابة أول سطر كود، وصولاً إلى بناء مشاريع كاملة. المطلوب فقط حاسوب ورغبة في التطبيق.",
+  },
+  {
+    q: "هل الشرح باللغة العربية؟",
+    a: "نعم، الشرح والمتابعة بالعربية، مع الإبقاء على المصطلحات التقنية وأسماء الدوال بالإنجليزية كما تُستخدم فعلياً في مجال البرمجة والتداول.",
+  },
+  {
+    q: "ماذا أحتاج لمتابعة الدورة؟",
+    a: "حاسوب واتصال بالإنترنت فقط. في الأسبوع الأول نثبّت بيئة العمل معاً خطوة بخطوة، ولا تحتاج أي برامج مدفوعة.",
+  },
+  {
+    q: "كم وقتاً أحتاج أسبوعياً؟",
+    a: "الدورة عملية، والأهم هو التطبيق بين الحصص. كلما خصصت وقتاً أكبر للتطبيق خرجت بمشاريع أكثر، والدعم متاح لأسئلتك طوال المسار.",
+  },
+  {
+    q: "كيف يتم الدفع؟",
+    a: "بإحدى وسيلتين: بالدينار الجزائري عبر حساب بريد الجزائر (CCP)، أو بعملة USDT الرقمية عبر شبكة Tron (TRC20). تفاصيل الحسابات في قسم الدفع والتسجيل أدناه.",
+  },
+  {
+    q: "كيف أسجل في الدورة؟",
+    a: "راسلنا مباشرة عبر تيليجرام، ستجد زر التسجيل في قسم الدفع والتسجيل أدناه، وسنرشدك خطوة بخطوة: تأكيد مقعدك، الدفع، والانطلاق مع المجموعة.",
+  },
+];
+
 /* ——————————————————— محاكي محرر الأكواد ——————————————————— */
 
 const CLASSES: Record<string, string> = {
@@ -201,39 +268,91 @@ const CODE: Array<Array<[string, string]>> = [
 ];
 
 function CodeEditor() {
+  const lastLine = CODE.length - 1;
   return (
     <div
       dir="ltr"
-      className="overflow-hidden rounded-xl border border-ink/20 bg-editor shadow-xl shadow-ink/10"
+      className="overflow-hidden rounded-xl border border-ink/20 bg-editor shadow-2xl shadow-ink/25 ring-1 ring-white/5"
     >
-      <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.04] px-4 py-3">
+      {/* شريط العنوان */}
+      <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.04] px-4 py-2.5">
         <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
         <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
         <span className="h-3 w-3 rounded-full bg-[#28c840]" />
-        <span className="ms-3 rounded-md bg-white/10 px-3 py-1 font-mono text-[11px] text-white/80">
+        <span className="ms-3 flex items-center gap-2 rounded-md border border-white/10 bg-white/[0.06] px-3 py-1 font-mono text-[11px] text-white/85">
+          <span className="text-[10px] font-bold text-[#d9b06c]">PY</span>
           ema_signal.py
         </span>
         <span className="ms-auto hidden font-mono text-[10px] uppercase tracking-widest text-white/35 sm:block">
           Python · Pandas
         </span>
       </div>
-      <div className="px-4 pb-14 pt-4 font-mono text-[12px] leading-6 sm:px-5 sm:text-[13px]">
-        {CODE.map((line, i) => (
-          <div key={i} className="flex">
-            <span className="w-7 shrink-0 select-none text-right text-white/20 sm:w-8">
-              {i + 1}
-            </span>
-            <span className="whitespace-pre text-[#dce8e2]">
-              {line.length === 0
-                ? " "
-                : line.map(([t, cls], j) => (
-                    <span key={j} className={CLASSES[cls]}>
-                      {t}
-                    </span>
-                  ))}
-            </span>
-          </div>
-        ))}
+
+      {/* مسار الملف */}
+      <div className="flex items-center gap-1.5 border-b border-white/5 bg-white/[0.02] px-4 py-1.5 font-mono text-[10px] text-white/30">
+        <span>trading-tools</span>
+        <span className="text-white/20">›</span>
+        <span className="text-white/50">ema_signal.py</span>
+        <span className="ms-auto hidden items-center gap-1.5 sm:flex">
+          <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#8fd6b4]" />
+          main*
+        </span>
+      </div>
+
+      {/* الكود */}
+      <div className="pt-3 font-mono text-[12px] leading-6 sm:text-[13px]">
+        {CODE.map((line, i) => {
+          const active = i === lastLine;
+          return (
+            <div
+              key={i}
+              className={`flex px-4 sm:px-5 ${
+                active ? "bg-white/[0.05]" : ""
+              }`}
+            >
+              <span
+                className={`w-7 shrink-0 select-none pe-3 text-right sm:w-8 ${
+                  active ? "text-[#8fd6b4]" : "text-white/20"
+                }`}
+              >
+                {i + 1}
+              </span>
+              <span className="whitespace-pre text-[#dce8e2]">
+                {line.length === 0
+                  ? " "
+                  : line.map(([t, cls], j) => (
+                      <span key={j} className={CLASSES[cls]}>
+                        {t}
+                      </span>
+                    ))}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* مخرجات التشغيل */}
+      <div className="mt-3 border-t border-white/10 bg-black/30 px-4 py-2.5 font-mono text-[11px] sm:px-5">
+        <div className="flex items-center gap-2">
+          <span className="text-white/30">$</span>
+          <span className="text-white/60">python ema_signal.py</span>
+          <span className="ms-auto rounded bg-[#8fd6b4]/10 px-2 py-0.5 text-[10px] font-bold tracking-wider text-[#8fd6b4]">
+            ✓ BUY
+          </span>
+        </div>
+      </div>
+
+      {/* شريط الحالة */}
+      <div className="flex items-center justify-between bg-pine-deep px-4 py-1.5 font-mono text-[10px] text-cream/60">
+        <span className="flex items-center gap-1.5">
+          <span className="text-[#8fd6b4]">⎇</span>
+          main
+        </span>
+        <span className="hidden items-center gap-4 sm:flex">
+          <span>UTF-8</span>
+          <span>Ln 10, Col 5</span>
+          <span>Python 3.12</span>
+        </span>
       </div>
     </div>
   );
@@ -387,7 +506,7 @@ export default function Home() {
             </a>
           </nav>
           <a
-            href={WA_LINK}
+            href={TG_LINK}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden rounded-lg bg-pine px-4 py-2.5 text-sm font-bold text-cream transition hover:bg-pine-deep sm:inline-flex"
@@ -406,12 +525,8 @@ export default function Home() {
           />
           <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-4 pb-16 pt-14 sm:px-6 sm:pt-20 lg:grid-cols-[1.02fr_0.98fr] lg:pb-20">
             <div>
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-pine/25 bg-pine-soft px-4 py-1.5 text-xs font-bold text-pine">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pine opacity-60" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-pine" />
-                </span>
-                دورة تعليمية جديدة — الانطلاق منتصف الشهر
+              <span className="inline-flex max-w-full items-center gap-2 rounded-full border border-pine/25 bg-gradient-to-l from-pine-soft to-brass-soft/60 px-4 py-1.5 text-xs font-bold leading-snug text-pine shadow-sm">
+                دورة المهندس عبد الرشيد حفسي في البرمجة والتداول بالذكاء الاصطناعي
               </span>
               <h1 className="mt-6 text-[2.1rem] font-extrabold leading-[1.3] sm:text-5xl sm:leading-[1.25]">
                 من متداول يعتمد المؤشرات الجاهزة…
@@ -425,19 +540,19 @@ export default function Home() {
                 <strong className="font-bold text-ink">
                   الذكاء الاصطناعي
                 </strong>{" "}
-                و<strong className="font-bold text-ink">أسواق المال</strong> — من
+                و<strong className="font-bold text-ink">أسواق المال</strong>، من
                 الصفر إلى الاحتراف: برمجة مؤشراتك، جلب بياناتك، واختبار أفكارك
                 على البيانات التاريخية قبل المخاطرة بأي مبلغ حقيقي.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <a
-                  href={WA_LINK}
+                  href={TG_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-lg bg-pine px-7 py-3.5 text-sm font-bold text-cream shadow-[0_2px_0_0_#073426] transition hover:bg-pine-deep active:translate-y-px sm:text-base"
                 >
-                  <IconChat className="h-5 w-5" />
-                  سجّل الآن — 80$
+                  <IconTelegram className="h-5 w-5" />
+                  سجّل الآن · 80$
                 </a>
                 <a
                   href="#learn"
@@ -526,14 +641,64 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ——— 02 لمن هذه الدورة ——— */}
+        {/* ——— 02 منهج الدورة ——— */}
+        <section id="curriculum" className="scroll-mt-24 py-16 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <SectionHead
+              no="02"
+              title="منهج الدورة أسبوعاً بأسبوع"
+              lead="ثلاثة أشهر مقسّمة إلى ثلاث مراحل واضحة: من أساسيات بايثون إلى أدوات تحليل حقيقية تختبرها على بيانات السوق."
+            />
+            <div className="grid gap-5 lg:grid-cols-3">
+              {CURRICULUM.map((month, i) => (
+                <article
+                  key={month.month}
+                  className="rounded-2xl border border-line bg-cream p-6 sm:p-7"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="rounded-full bg-pine-soft px-3 py-1 text-[12px] font-bold text-pine">
+                      {month.month}
+                    </span>
+                    <span className="whitespace-nowrap text-xs font-semibold text-brass">
+                      المرحلة {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <h3 className="mt-4 text-[17px] font-bold">{month.phase}</h3>
+                  <ul className="mt-5">
+                    {month.weeks.map((week, j) => (
+                      <li
+                        key={week}
+                        className="flex items-start gap-3 border-t border-line/70 pt-4 pb-4 last:pb-0 [&:first-child]:pt-0 [&:first-child]:border-t-0"
+                      >
+                        <span className="mt-0.5 shrink-0 whitespace-nowrap text-[11px] font-bold text-brass">
+                          الأسبوع {String(i * 4 + j + 1).padStart(2, "0")}
+                        </span>
+                        <span className="text-sm leading-relaxed">{week}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+            <p className="mt-6 flex items-start gap-2 rounded-lg bg-brass-soft/80 px-4 py-3 text-[13px] leading-relaxed text-ink">
+              <IconAlert className="mt-0.5 h-4 w-4 shrink-0 text-brass" />
+              <span>
+                <strong className="font-bold">ملاحظة:</strong> قد يتكيّف ترتيب
+                المحاور قليلاً حسب وتيرة المجموعة، مع ضمان تغطية كامل المحتوى
+                خلال المدة الكاملة للدورة.
+              </span>
+            </p>
+          </div>
+        </section>
+
+        {/* ——— 03 لمن هذه الدورة ——— */}
         <section
           id="audience"
           className="scroll-mt-24 border-y border-line bg-paper-deep/45 py-16 sm:py-24"
         >
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <SectionHead
-              no="02"
+              no="03"
               title="لمن هذه الدورة؟"
               lead="صُمّمت الدورة لتناسب أكثر من موقف: سواء كنت في السوق منذ سنوات أو أمام شاشة لأول مرة."
             />
@@ -556,7 +721,7 @@ export default function Home() {
               ))}
             </div>
             <div className="mt-10 flex items-start gap-4 rounded-xl border border-brass/30 bg-brass-soft/70 p-6 sm:items-center sm:p-7">
-              <IconSparkles className="hidden h-7 w-7 shrink-0 text-brass sm:block" />
+              <IconSprout className="hidden h-7 w-7 shrink-0 text-brass sm:block" />
               <div>
                 <p className="font-extrabold">
                   لا تحتاج إلى خبرة سابقة في البرمجة.
@@ -570,10 +735,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ——— 03 ماذا ستحصل عليه ——— */}
+        {/* ——— 04 ماذا ستحصل عليه ——— */}
         <section id="gain" className="scroll-mt-24 py-16 sm:py-24">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <SectionHead no="03" title="ماذا ستحصل عليه؟" />
+            <SectionHead no="04" title="ماذا ستحصل عليه؟" />
             <div className="grid gap-5 md:grid-cols-3">
               {GAIN.map((g) => (
                 <article
@@ -593,12 +758,88 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ——— 04 تفاصيل الدورة ——— */}
+        {/* ——— 05 المدرّب ——— */}
+        <section
+          id="instructor"
+          className="scroll-mt-24 border-y border-line bg-paper-deep/45 py-16 sm:py-24"
+        >
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <SectionHead
+              no="05"
+              title="من يقدّم الدورة؟"
+              lead="دورة عملية يقدّمها من بنى أدواته بنفسه، لا مجرد شارح نظري للمفاهيم."
+            />
+            <div className="rounded-2xl border border-line bg-cream p-6 sm:p-9">
+              <div className="flex flex-col gap-7 sm:flex-row sm:items-start">
+                <div className="mx-auto flex h-28 w-28 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-pine-soft ring-1 ring-pine/15 sm:mx-0 sm:ms-0">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="https://secure.gravatar.com/avatar/d7e16096bc6eed90eb0a180806e7af7abaf9d6960172f10c66e7efca70b6da23?d=identicon&s=512"
+                    alt="صورة عبد الرشيد حفسي"
+                    width={112}
+                    height={112}
+                    loading="lazy"
+                    className="h-28 w-28 object-cover"
+                  />
+                </div>
+                <div className="flex-1">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <h3 className="text-xl font-extrabold">عبد الرشيد حفسي</h3>
+                    <span
+                      dir="ltr"
+                      className="rounded-full border border-line bg-paper px-3 py-1 text-[11px] font-bold text-ink-soft"
+                    >
+                      ABDERRACHID HAFSI
+                    </span>
+                  </div>
+                  <p className="mt-1 text-sm font-bold text-pine">
+                    مدرّب الدورة: برمجة × ذكاء اصطناعي × تداول
+                  </p>
+                  <p className="mt-4 text-[15px] leading-loose text-ink-soft">
+                    مبرمج ومتداول بنى أدواته التحليلية بنفسه: من جلب البيانات
+                    ومعالجتها، إلى مؤشرات مبرمجة يدوياً، إلى اختبار الأفكار على
+                    البيانات التاريخية. في هذه الدورة يأخذك عبر نفس المسار
+                    العملي: من أول سطر كود إلى أدوات تحليل تعمل فعلياً على
+                    بيانات السوق.
+                  </p>
+                  <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                    {[
+                      "شرح بالعربية بأسلوب مبسّط وعملي",
+                      "تطبيق مباشر من الأسبوع الأول",
+                      "دعم ومتابعة طوال مدة الدورة",
+                      "مشاريع مبنية على بيانات حقيقية",
+                    ].map((point) => (
+                      <li
+                        key={point}
+                        className="flex items-start gap-2 text-sm font-semibold"
+                      >
+                        <IconCheck className="mt-0.5 h-4 w-4 shrink-0 text-pine" />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    href={TG_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    dir="ltr"
+                    className="mt-7 inline-flex items-center gap-2 rounded-lg border border-line bg-paper px-4 py-2.5 font-mono text-sm font-bold text-pine transition hover:border-pine/40 hover:bg-pine-soft/60"
+                  >
+                    <IconTelegram className="h-4 w-4" />
+                    {TELEGRAM_HANDLE}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ——— 06 تفاصيل الدورة ——— */}
         <section id="details" className="scroll-mt-24 bg-pine-deep text-cream">
           <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-16">
             <div className="mb-10 flex items-center gap-4">
               <span className="font-mono text-sm font-semibold text-[#e9c98a]">
-                04
+                06
               </span>
               <span className="h-px w-10 bg-[#e9c98a]/50" aria-hidden="true" />
               <h2 className="text-2xl font-extrabold sm:text-3xl">
@@ -628,13 +869,42 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ——— 05 الدفع والتسجيل ——— */}
+        {/* ——— 07 الأسئلة الشائعة ——— */}
+        <section id="faq" className="scroll-mt-24 py-16 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <SectionHead
+              no="07"
+              title="الأسئلة الشائعة"
+              lead="أجوبة سريعة عن أكثر ما يسأل عنه المسجّلون قبل انطلاق الدورة."
+            />
+            <div className="rounded-2xl border border-line bg-cream px-6 sm:px-8">
+              <Accordion type="single" collapsible>
+                {FAQ.map((item, i) => (
+                  <AccordionItem
+                    key={item.q}
+                    value={`faq-${i}`}
+                    className="border-line"
+                  >
+                    <AccordionTrigger className="py-5 text-[15px] font-bold text-ink hover:no-underline">
+                      <span className="text-start">{item.q}</span>
+                    </AccordionTrigger>
+                    <AccordionContent className="text-[14px] leading-loose text-ink-soft">
+                      {item.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </div>
+        </section>
+
+        {/* ——— 08 الدفع والتسجيل ——— */}
         <section id="register" className="scroll-mt-24 py-16 sm:py-24">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <SectionHead
-              no="05"
+              no="08"
               title="الدفع والتسجيل"
-              lead="اختر وسيلة الدفع المناسبة لك — بالدينار عبر بريد الجزائر أو بالعملة الرقمية USDT — ثم راسلنا عبر واتساب لتأكيد مقعدك."
+              lead="اختر وسيلة الدفع المناسبة لك، بالدينار عبر بريد الجزائر أو بالعملة الرقمية USDT، ثم راسلنا عبر تيليجرام لتأكيد مقعدك."
             />
 
             <div className="grid gap-6 lg:grid-cols-2">
@@ -649,7 +919,7 @@ export default function Home() {
                   </span>
                 </div>
                 <h3 className="mt-5 text-lg font-extrabold sm:text-xl">
-                  تحويل بريدي — بريد الجزائر (CCP)
+                  تحويل بريدي · بريد الجزائر (CCP)
                 </h3>
                 <div className="mt-6 space-y-5">
                   <div>
@@ -738,8 +1008,8 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <p className="mt-6 flex items-start gap-2 rounded-lg bg-clay/10 px-4 py-3 text-[13px] font-semibold leading-relaxed text-clay">
-                  <IconAlert className="mt-0.5 h-4 w-4 shrink-0" />
+                <p className="mt-6 flex items-start gap-2 rounded-lg bg-brass-soft/80 px-4 py-3 text-[13px] leading-relaxed text-ink">
+                  <IconAlert className="mt-0.5 h-4 w-4 shrink-0 text-brass" />
                   أرسل USDT عبر شبكة Tron (TRC20) فقط، وتأكد من اختيار الشبكة
                   الصحيحة قبل إتمام العملية.
                 </p>
@@ -751,35 +1021,35 @@ export default function Home() {
               <div className="flex flex-col items-start gap-6 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
                 <div>
                   <h3 className="text-xl font-extrabold sm:text-2xl">
-                    المقاعد محدودة — سجّل الآن وابدأ رحلتك نحو بناء أدواتك
+                    المقاعد محدودة، سجّل الآن وابدأ رحلتك نحو بناء أدواتك
                     بنفسك.
                   </h3>
                   <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">
-                    للتسجيل والاستفسار، راسلنا مباشرة عبر واتساب وسنجيبك على كل
-                    تفاصيل الدورة.
+                    للتسجيل والاستفسار، راسلنا مباشرة عبر تيليجرام وسنجيبك على
+                    كل تفاصيل الدورة.
                   </p>
                   <p
                     dir="ltr"
                     className="mt-3 font-mono text-base font-bold tracking-wide text-pine"
                   >
-                    {PHONE_DISPLAY}
+                    {TELEGRAM_HANDLE}
                   </p>
                 </div>
                 <a
-                  href={WA_LINK}
+                  href={TG_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex shrink-0 items-center gap-2.5 rounded-lg bg-pine px-8 py-4 text-base font-bold text-cream shadow-[0_2px_0_0_#073426] transition hover:bg-pine-deep active:translate-y-px"
                 >
-                  <IconChat className="h-5 w-5" />
-                  سجّل الآن عبر واتساب
+                  <IconTelegram className="h-5 w-5" />
+                  سجّل الآن عبر تيليجرام
                 </a>
               </div>
             </div>
 
             {/* تنبيه */}
-            <div className="mt-8 flex items-start gap-3 rounded-xl border border-clay/25 border-e-4 border-e-clay bg-clay/5 p-5">
-              <IconAlert className="mt-0.5 h-5 w-5 shrink-0 text-clay" />
+            <div className="mt-8 flex items-start gap-3 rounded-xl border border-brass/25 border-e-4 border-e-brass bg-brass-soft/50 p-5">
+              <IconAlert className="mt-0.5 h-5 w-5 shrink-0 text-brass" />
               <p className="text-sm leading-relaxed text-ink-soft">
                 <span className="font-extrabold text-ink">تنبيه مهم: </span>
                 هذه الدورة تعليمية وتقنية بحتة، ولا تقدّم توصيات استثمارية أو
@@ -795,7 +1065,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4 pb-24 pt-10 sm:px-6 md:pb-10">
           <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
             <div className="flex items-center gap-2.5 text-cream">
-              <LogoMark className="h-7 w-7 shrink-0 text-cream" />
+              <LogoMark className="h-7 w-7 shrink-0 text-pine" />
               <span className="text-sm font-extrabold">
                 برمجة <span className="text-brass">×</span> ذكاء اصطناعي{" "}
                 <span className="text-brass">×</span> تداول
@@ -814,6 +1084,9 @@ export default function Home() {
               <a href="#details" className="transition hover:text-cream">
                 التفاصيل
               </a>
+              <a href="#faq" className="transition hover:text-cream">
+                الأسئلة الشائعة
+              </a>
               <a href="#register" className="transition hover:text-cream">
                 التسجيل والدفع
               </a>
@@ -824,7 +1097,7 @@ export default function Home() {
             #تحليل_البيانات #بايثون #دورة_تعليمية
           </p>
           <p className="mt-3 text-xs text-cream/45">
-            © 2026 دورة البرمجة والذكاء الاصطناعي في عالم التداول — جميع الحقوق
+            © 2026 دورة البرمجة والذكاء الاصطناعي في عالم التداول. جميع الحقوق
             محفوظة.
           </p>
         </div>
@@ -843,7 +1116,7 @@ export default function Home() {
             </span>
           </div>
           <a
-            href={WA_LINK}
+            href={TG_LINK}
             target="_blank"
             rel="noopener noreferrer"
             className="shrink-0 rounded-lg bg-cream px-5 py-2.5 text-sm font-bold text-pine shadow"
