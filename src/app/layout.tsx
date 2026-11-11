@@ -13,10 +13,26 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
 });
 
+// عنوان الموقع المطلق — يُضبط عبر متغير البيئة عند النشر
+// (على Vercel يُكتشف تلقائياً، ويمكن تجاوزه بـ NEXT_PUBLIC_SITE_URL)
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "http://localhost:3000");
+
+const siteTitle =
+  "دورة البرمجة والذكاء الاصطناعي في عالم التداول | من الصفر إلى الاحتراف";
+
+const siteDescription =
+  "دورة تعليمية عملية أونلاين تجمع البرمجة والذكاء الاصطناعي وأسواق المال: أساسيات بايثون، برمجة المؤشرات الفنية، جلب البيانات ومعالجتها، Backtesting، وبناء أدوات تحليل خاصة بك. المدة 3 أشهر، السعر 80$.";
+
 export const metadata: Metadata = {
-  title: "دورة البرمجة والذكاء الاصطناعي في عالم التداول | من الصفر إلى الاحتراف",
-  description:
-    "دورة تعليمية عملية أونلاين تجمع البرمجة والذكاء الاصطناعي وأسواق المال: أساسيات بايثون، برمجة المؤشرات الفنية، جلب البيانات ومعالجتها، Backtesting، وبناء أدوات تحليل خاصة بك. المدة 3 أشهر، السعر 80$.",
+  metadataBase: new URL(siteUrl),
+  title: siteTitle,
+  description: siteDescription,
   keywords: [
     "دورة تعليمية",
     "البرمجة",
@@ -28,6 +44,35 @@ export const metadata: Metadata = {
     "Backtesting",
   ],
   authors: [{ name: "ABDERRACHID HAFSI" }],
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: "website",
+    locale: "ar_DZ",
+    url: "/",
+    siteName: "دورة البرمجة والذكاء الاصطناعي في عالم التداول",
+    title: siteTitle,
+    description: siteDescription,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "دورة البرمجة والذكاء الاصطناعي في عالم التداول — عبد الرشيد حفسي",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+    images: ["/og-image.png"],
+  },
 };
 
 export const viewport: Viewport = {
