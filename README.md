@@ -1,10 +1,10 @@
 <div align="center">
 
-# 🧠 دورة البرمجة والذكاء الاصطناعي في عالم التداول
+# 🧠 Programming & AI in Trading — Course Landing Page
 
-### من متداول يعتمد المؤشرات الجاهزة… إلى صانع أدواته الخاصة
+### From relying on ready-made indicators… to building your own tools
 
-صفحة هبوط عربية (RTL) احترافية لدورة عملية تجمع **البرمجة × الذكاء الاصطناعي × التداول**
+A professional Arabic-first (RTL) landing page for a hands-on course combining **Programming × AI × Trading**
 
 [![Next.js](https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
@@ -12,189 +12,189 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![Bun](https://img.shields.io/badge/Bun-1.x-f9f1e1?style=for-the-badge&logo=bun&logoColor=black)](https://bun.sh/)
 
-[المميزات](#-المميزات) · [التقنيات](#-التقنيات) · [التشغيل محلياً](#-التشغيل-محلياً) · [بنية المشروع](#-بنية-المشروع) · [نظام التصميم](#-نظام-التصميم) · [النشر](#-النشر)
+[Features](#-features) · [Tech Stack](#-tech-stack) · [Getting Started](#-getting-started) · [Project Structure](#-project-structure) · [Design System](#-design-system) · [Deployment](#-deployment)
 
 </div>
 
 ---
 
-## ✨ نظرة عامة
+## ✨ Overview
 
-صفحة هبوط **أحادية الصفحة (Single Page)** مبنية بـ Next.js App Router، مصممة بالكامل للغة العربية (RTL) بخط **Cairo**، وتقدّم دورة تدريبية أونلاين مدتها **3 أشهر** في:
+A **single-page** landing site built with the Next.js App Router, designed entirely for Arabic (RTL) using the **Cairo** typeface. It promotes a **3-month** online training course covering:
 
-- 🐍 **البرمجة** — أساسيات بايثون حتى بناء أدوات تحليل حقيقية
-- 🤖 **الذكاء الاصطناعي** — قراءة البيانات واتخاذ القرار وأتمتة المهام
-- 📈 **التداول** — المؤشرات الفنية، جلب البيانات، واختبار الاستراتيجيات (Backtesting)
+- 🐍 **Programming** — from Python fundamentals to building real analysis tools
+- 🤖 **AI** — reading data, decision-making, and automating repetitive tasks
+- 📈 **Trading** — technical indicators, market data, and strategy backtesting
 
-> 🎯 الهدف: صفحة تسويقية سريعة، أنيقة، ومقنعة تحوّل الزائر إلى مسجّل عبر تيليجرام.
+> 🎯 Goal: a fast, polished, and persuasive marketing page that converts visitors into registrations via Telegram.
 
 ---
 
-## 🚀 المميزات
+## 🚀 Features
 
-| الميزة | الوصف |
+| Feature | Description |
 | --- | --- |
-| 🌍 **عربي RTL بالكامل** | تخطيط واتجاه نصوص وأرقام مضبوط بدقة، بخط Cairo من Google Fonts |
-| 🎨 **نظام تصميم مخصص** | لوحة ألوان Pine / Brass / Cream / Ink بهوية بصرية موحّدة |
-| 💻 **محرر أكواد احترافي** | محاكاة IDE (شريط ملف، Breadcrumb، سطر نشط، مخرجات تشغيل، شريط حالة) |
-| 📊 **رسم شموع SVG** | مخطط شموع يابانية مبني يدوياً بدون مكتبات خارجية |
-| 🎞️ **شريط محاور متحرك** | Ticker سلس يعرض محاور الدورة |
-| ❓ **أسئلة شائعة تفاعلية** | Accordion بحركات دخول/خروج ناعمة (Radix UI) |
-| 📋 **نسخ سريع للدفع** | حقول CCP و USDT مع زر نسخ بضغطة واحدة |
-| 📱 **متجاوب بالكامل** | تصميم Mobile-first مع شريط تسجيل ثابت أسفل الشاشة |
-| 🔍 **SEO كامل** | Metadata، وصف، كلمات مفتاحية، Open Graph، و robots |
-| ⚡ **أداء عالٍ** | Next.js App Router + Server Components + خطوط محسّنة |
+| 🌍 **Full Arabic RTL** | Carefully tuned layout, text, and number direction with Google's Cairo font |
+| 🎨 **Custom design system** | Pine / Brass / Cream / Ink palette with a consistent visual identity |
+| 💻 **Pro code editor mockup** | IDE-style panel: file tab, breadcrumb, active line, terminal output, status bar |
+| 📊 **Hand-drawn SVG candles** | Candlestick chart built from scratch — no chart libraries |
+| 🎞️ **Animated ticker** | Smooth marquee showing the course's core topics |
+| ❓ **Interactive FAQ** | Accordion with smooth open/close animations (Radix UI) |
+| 📋 **One-click copy fields** | CCP and USDT payment fields with copy buttons |
+| 📱 **Fully responsive** | Mobile-first layout with a sticky bottom registration bar |
+| 🔍 **Full SEO** | Metadata, description, keywords, Open Graph, and robots |
+| ⚡ **High performance** | App Router + Server Components + optimized fonts |
 
 ---
 
-## 🧱 التقنيات
+## 🧱 Tech Stack
 
-| الفئة | التقنية |
+| Layer | Technology |
 | --- | --- |
 | **Framework** | [Next.js 16](https://nextjs.org/) (App Router) |
 | **UI Library** | [React 19](https://react.dev/) |
 | **Language** | [TypeScript 5](https://www.typescriptlang.org/) |
 | **Styling** | [Tailwind CSS v4](https://tailwindcss.com/) + `@theme` tokens |
 | **Components** | [shadcn/ui](https://ui.shadcn.com/) + [Radix UI](https://www.radix-ui.com/) |
-| **Icons** | مجموعة أيقونات SVG مخصصة + Lucide |
-| **Fonts** | Cairo (عربي) · Geist Mono (أكواد) |
+| **Icons** | Custom SVG icon set + Lucide |
+| **Fonts** | Cairo (Arabic) · Geist Mono (code) |
 | **Package Manager** | [Bun](https://bun.sh/) |
 | **Deployment** | Standalone output + Caddy reverse proxy |
 
 ---
 
-## ⚡ التشغيل محلياً
+## ⚡ Getting Started
 
-### المتطلبات
+### Requirements
 
-- [Bun](https://bun.sh/) `>= 1.1` (أو Node.js `>= 20`)
+- [Bun](https://bun.sh/) `>= 1.1` (or Node.js `>= 20`)
 
-### الخطوات
+### Steps
 
 ```bash
-# 1) تثبيت الاعتماديات
+# 1) Install dependencies
 bun install
 
-# 2) تشغيل بيئة التطوير
+# 2) Start the dev server
 bun run dev
 ```
 
-افتح المتصفح على 👉 **http://localhost:3000**
+Open 👉 **http://localhost:3000**
 
-### بناء نسخة الإنتاج
+### Production build
 
 ```bash
-# بناء المشروع (standalone)
+# Build the standalone bundle
 bun run build
 
-# تشغيل السيرفر الإنتاجي
+# Run the production server
 bun run start
 ```
 
-> 📝 سكربت `build` ينسخ ملفات `static` و `public` تلقائياً إلى مجلد `standalone` الجاهز للنشر.
+> 📝 The `build` script automatically copies `static` and `public` into the `standalone` folder, ready to deploy.
 
 ---
 
-## 📁 بنية المشروع
+## 📁 Project Structure
 
 ```text
 .
 ├── src/
 │   ├── app/
-│   │   ├── layout.tsx        # الخطوط + Metadata + الهيكل العام
-│   │   ├── page.tsx          # الصفحة الكاملة (كل الأقسام في ملف واحد)
-│   │   └── globals.css       # نظام التصميم (ألوان، حركات، متغيرات)
+│   │   ├── layout.tsx        # Fonts + Metadata + root layout
+│   │   ├── page.tsx          # The full page (all sections in one file)
+│   │   └── globals.css       # Design system (colors, animations, tokens)
 │   ├── components/
-│   │   ├── icons.tsx         # مجموعة الأيقونات المخصصة (SVG)
-│   │   └── copy-field.tsx    # حقل النسخ السريع
+│   │   ├── icons.tsx         # Custom SVG icon set
+│   │   └── copy-field.tsx    # Copy-to-clipboard field
 │   └── lib/
-│       └── utils.ts          # أدوات مساعدة (cn)
+│       └── utils.ts          # Utilities (cn)
 ├── public/
-│   ├── logo.svg              # شعار الموقع
-│   └── robots.txt            # إعدادات محركات البحث
-├── prisma/                   # (من القالب) جاهز لأي توسعة مستقبلية
-├── Caddyfile                 # إعدادات Reverse Proxy للنشر
-├── next.config.ts            # إعدادات Next.js (standalone)
+│   ├── logo.svg              # Site logo
+│   └── robots.txt            # Search engine config
+├── prisma/                   # (from template) ready for future extensions
+├── Caddyfile                 # Reverse proxy config for deployment
+├── next.config.ts            # Next.js config (standalone)
 └── package.json
 ```
 
-### أقسام الصفحة الرئيسية
+### Landing page sections
 
-| # | القسم | المحتوى |
+| # | Section | Content |
 | --- | --- | --- |
-| — | **Hero** | الشارة التعريفية، العنوان الرئيسي، محرر الأكواد، أزرار التسجيل |
-| — | **Ticker** | شريط متحرك بمحاور الدورة |
-| 01 | **ماذا ستتعلم** | بطاقات المهارات الأساسية |
-| 02 | **منهج الدورة** | 3 أشهر × 4 أسابيع مع وصف تفصيلي لكل أسبوع |
-| 03 | **لمن هذه الدورة** | الفئات المستهدفة + تنبيه "لا تحتاج خبرة سابقة" |
-| 04 | **ماذا ستحصل عليه** | مزايا الالتحاق |
-| 05 | **المدرّب** | نبذة عن عبد الرشيد حفسي + رابط تيليجرام |
-| 06 | **تفاصيل الدورة** | الموعد، المدة، المكان، السعر |
-| 07 | **الأسئلة الشائعة** | 6 أسئلة تفاعلية |
-| 08 | **الدفع والتسجيل** | CCP (بريد الجزائر) + USDT (TRC20) + زر التسجيل |
+| — | **Hero** | Badge, headline, code editor mockup, registration CTAs |
+| — | **Ticker** | Animated marquee of the course topics |
+| 01 | **What you'll learn** | Core skill cards |
+| 02 | **Curriculum** | 3 months × 4 weeks with detailed week descriptions |
+| 03 | **Who it's for** | Target audiences + "no experience needed" callout |
+| 04 | **What you get** | Course benefits |
+| 05 | **Instructor** | Bio of Abd Errachid Hafsi + Telegram link |
+| 06 | **Course details** | Date, duration, location, price |
+| 07 | **FAQ** | 6 interactive questions |
+| 08 | **Payment & registration** | CCP (Algérie Poste) + USDT (TRC20) + sign-up CTA |
 
 ---
 
-## 🎨 نظام التصميم
+## 🎨 Design System
 
-جميع الألوان معرّفة كـ **Design Tokens** في `globals.css` عبر `@theme`:
+All colors are defined as **design tokens** in `globals.css` via `@theme`:
 
-| Token | القيمة | الاستخدام |
+| Token | Value | Usage |
 | --- | --- | --- |
-| `--color-paper` | `#f8f6f0` | خلفية الصفحة |
-| `--color-cream` | `#fffdf8` | خلفية البطاقات |
-| `--color-ink` | `#1f2a24` | النصوص الأساسية |
-| `--color-pine` | `#0e5e43` | اللون الأساسي (أزرار، روابط) |
-| `--color-brass` | `#a3762a` | لون التمييز (تسلسل الأقسام) |
-| `--color-clay` | `#b8442f` | تحذيرات |
-| `--color-editor` | `#0e1613` | خلفية محرر الأكواد |
+| `--color-paper` | `#f8f6f0` | Page background |
+| `--color-cream` | `#fffdf8` | Card background |
+| `--color-ink` | `#1f2a24` | Primary text |
+| `--color-pine` | `#0e5e43` | Primary color (buttons, links) |
+| `--color-brass` | `#a3762a` | Accent (section numbering) |
+| `--color-clay` | `#b8442f` | Warnings |
+| `--color-editor` | `#0e1613` | Code editor background |
 
-> 💡 لتغيير هوية الموقع بالكامل: عدّل هذه القيم فقط في `src/app/globals.css`.
+> 💡 To rebrand the entire site, change only these values in `src/app/globals.css`.
 
 ---
 
-## 🌐 النشر
+## 🌐 Deployment
 
-المشروع يُبنى بوضع **standalone** (خفيف وجاهز للاستضافة الذاتية):
+The project builds in **standalone** mode (lightweight, self-host ready):
 
 ```bash
-bun run build          # ينتج .next/standalone/server.js
-bun run start          # تشغيل السيرفر
+bun run build          # produces .next/standalone/server.js
+bun run start          # starts the server
 ```
 
-- 🐳 ملف `Caddyfile` جاهز لتوجيه النطاق إلى السيرفر عبر Caddy
-- ☁️ متوافق أيضاً مع Vercel / Docker / أي VPS
+- 🐳 `Caddyfile` is ready to route your domain through Caddy
+- ☁️ Also compatible with Vercel / Docker / any VPS
 
 ---
 
-## 🔧 أوامر مفيدة
+## 🔧 Useful Commands
 
-| الأمر | الوظيفة |
+| Command | Purpose |
 | --- | --- |
-| `bun run dev` | تشغيل بيئة التطوير (منفذ 3000) |
-| `bun run build` | بناء نسخة الإنتاج |
-| `bun run start` | تشغيل نسخة الإنتاج |
-| `bun run lint` | فحص الكود بـ ESLint |
+| `bun run dev` | Start the dev server (port 3000) |
+| `bun run build` | Build for production |
+| `bun run start` | Run the production build |
+| `bun run lint` | Lint the codebase with ESLint |
 
 ---
 
-## 📬 التواصل والتسجيل
+## 📬 Contact & Registration
 
-- 💬 **تيليجرام:** [@King_arius_dz](https://t.me/King_arius_dz)
-- 💰 **الدفع:** بريد الجزائر (CCP) · أو USDT عبر شبكة Tron (TRC20)
+- 💬 **Telegram:** [@King_arius_dz](https://t.me/King_arius_dz)
+- 💰 **Payment:** Algérie Poste (CCP) · or USDT on Tron (TRC20)
 
 ---
 
 <div align="center">
 
-### ⚠️ تنبيه
+### ⚠️ Disclaimer
 
-هذه الدورة **تعليمية وتقنية بحتة**، ولا تقدّم توصيات استثمارية أو وعوداً بالأرباح. التداول ينطوي على مخاطر عالية.
+This course is **strictly educational and technical**. It does not provide investment advice or profit guarantees. Trading carries significant risk.
 
 ---
 
-**© 2026 دورة البرمجة والذكاء الاصطناعي في عالم التداول — جميع الحقوق محفوظة**
+**© 2026 Programming & AI in Trading Course — All rights reserved**
 
-صُمّمت وبُنيت بواسطة [ABDERRACHID HAFSI](https://t.me/King_arius_dz)
+Designed & built by [ABDERRACHID HAFSI](https://t.me/King_arius_dz)
 
 </div>
