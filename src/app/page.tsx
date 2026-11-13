@@ -689,7 +689,7 @@ export default function Home() {
                   src={YOUTUBE_EMBED}
                   title="شاهد من قناة عبد الرشيد حفصي على يوتيوب"
                   loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen
                   className="absolute inset-0 h-full w-full border-0"
