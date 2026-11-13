@@ -529,7 +529,7 @@ export default function Home() {
           <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-4 pb-16 pt-14 sm:px-6 sm:pt-20 lg:grid-cols-[1.02fr_0.98fr] lg:pb-20">
             <div>
               <span className="inline-flex max-w-full items-center gap-2 rounded-full border border-pine/25 bg-gradient-to-l from-pine-soft to-brass-soft/60 px-4 py-1.5 text-xs font-bold leading-snug text-pine shadow-sm">
-                دورة المهندس عبد الرشيد حفسي في البرمجة والتداول بالذكاء الاصطناعي
+                دورة المهندس عبد الرشيد حفصي في البرمجة والتداول بالذكاء الاصطناعي
               </span>
               <h1 className="mt-6 text-[2.1rem] font-extrabold leading-[1.3] sm:text-5xl sm:leading-[1.25]">
                 من متداول يعتمد المؤشرات الجاهزة…
@@ -702,7 +702,7 @@ export default function Home() {
               </span>
               <span className="min-w-0 flex-1">
                 <span className="block text-[15px] font-bold text-ink">
-                  شاهد من قناة عبد الرشيد حفسي على يوتيوب
+                  شاهد من قناة عبد الرشيد حفصي على يوتيوب
                 </span>
                 <span className="mt-0.5 block text-[13px] leading-relaxed text-ink-soft">
                   جولة عملية وشرح مباشر لأسلوب العمل داخل الدورة — من المؤشر
@@ -801,7 +801,7 @@ export default function Home() {
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="https://secure.gravatar.com/avatar/d7e16096bc6eed90eb0a180806e7af7abaf9d6960172f10c66e7efca70b6da23?d=identicon&s=512"
-                    alt="صورة عبد الرشيد حفسي"
+                    alt="صورة عبد الرشيد حفصي"
                     width={112}
                     height={112}
                     loading="lazy"
@@ -810,7 +810,7 @@ export default function Home() {
                 </div>
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-3">
-                    <h3 className="text-xl font-extrabold">عبد الرشيد حفسي</h3>
+                    <h3 className="text-xl font-extrabold">عبد الرشيد حفصي</h3>
                     <span
                       dir="ltr"
                       className="rounded-full border border-line bg-paper px-3 py-1 text-[11px] font-bold text-ink-soft"
