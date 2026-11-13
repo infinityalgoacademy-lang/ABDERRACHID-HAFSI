@@ -1152,6 +1152,16 @@ export default function Home() {
                   >
                     {TELEGRAM_HANDLE}
                   </p>
+                  <p className="mt-4 flex items-start gap-2 rounded-lg bg-paper/70 px-3.5 py-2.5 text-[13px] leading-relaxed text-ink">
+                    <IconAlert className="mt-0.5 h-4 w-4 shrink-0 text-brass" />
+                    <span>
+                      <span className="font-extrabold">
+                        ملاحظة للمستخدمين في الجزائر:{" "}
+                      </span>
+                      العملات الرقمية (USDT) محظورة في الجزائر، لذلك الدفع
+                      بالدينار عبر بريد الجزائر (CCP) هو الخيار الخاص بكم.
+                    </span>
+                  </p>
                 </div>
                 <a
                   href={TG_LINK}
