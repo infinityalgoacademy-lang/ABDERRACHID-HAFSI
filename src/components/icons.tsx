@@ -253,6 +253,15 @@ export function IconTelegram(props: IconProps) {
   );
 }
 
+export function IconYouTube(props: IconProps) {
+  return (
+    <Base {...props}>
+      <rect x="2" y="5" width="20" height="14" rx="4" />
+      <path d="m10 9 5 3-5 3Z" fill="currentColor" />
+    </Base>
+  );
+}
+
 export function IconChat(props: IconProps) {
   return (
     <Base {...props}>

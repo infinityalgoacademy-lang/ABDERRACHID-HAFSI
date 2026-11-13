@@ -23,6 +23,7 @@ import {
   IconTag,
   IconTelegram,
   IconUser,
+  IconYouTube,
   LogoMark,
 } from "@/components/icons";
 import { CopyField } from "@/components/copy-field";
@@ -45,6 +46,8 @@ const TG_LINK = `https://t.me/King_arius_dz?text=${encodeURIComponent(
 const CCP_NUMBER = "10716064/45";
 const RIP_NUMBER = "00799999001071606445";
 const USDT_ADDRESS = "TFUSU7B7K3GNxr7P8PKkt8PpjtTeciskk3";
+
+const YOUTUBE_LINK = "https://www.youtube.com/watch?v=2CyHkAd3EL8";
 
 const TICKER_ITEMS = [
   "أساسيات بايثون",
@@ -688,6 +691,29 @@ export default function Home() {
                 خلال المدة الكاملة للدورة.
               </span>
             </p>
+            <a
+              href={YOUTUBE_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-4 flex items-center gap-3.5 rounded-xl border border-line bg-cream p-4 transition hover:border-pine/40 hover:bg-pine-soft/50 sm:p-5"
+            >
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-pine text-cream shadow-[0_2px_0_0_#073426]">
+                <IconYouTube className="h-5 w-5" />
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block text-[15px] font-bold text-ink">
+                  شاهد من قناة عبد الرشيد حفسي على يوتيوب
+                </span>
+                <span className="mt-0.5 block text-[13px] leading-relaxed text-ink-soft">
+                  جولة عملية وشرح مباشر لأسلوب العمل داخل الدورة — من المؤشر
+                  الجاهز إلى الأداة التي تبنيها بنفسك.
+                </span>
+              </span>
+              <span className="hidden shrink-0 items-center gap-1.5 rounded-lg border border-line bg-paper px-3.5 py-2 text-[13px] font-bold text-pine transition group-hover:border-pine/40 group-hover:bg-pine-soft/60 sm:inline-flex">
+                مشاهدة
+                <IconArrowLeft className="h-4 w-4" />
+              </span>
+            </a>
           </div>
         </section>
 
