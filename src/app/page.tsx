@@ -333,13 +333,13 @@ function CodeEditor() {
       </div>
 
       {/* الكود */}
-      <div className="pt-3 font-mono text-[12px] leading-6 sm:text-[13px]">
+      <div className="overflow-x-auto pt-3 font-mono text-[12px] leading-6 sm:text-[13px]">
         {CODE.map((line, i) => {
           const active = i === lastLine;
           return (
             <div
               key={i}
-              className={`flex px-4 sm:px-5 ${
+              className={`flex min-w-max px-4 sm:px-5 ${
                 active ? "bg-white/[0.05]" : ""
               }`}
             >
@@ -522,7 +522,7 @@ export default function Home() {
             aria-hidden="true"
           />
           <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-4 pb-16 pt-14 sm:px-6 sm:pt-20 lg:grid-cols-[1.02fr_0.98fr] lg:pb-20">
-            <div>
+            <div className="min-w-0">
               <span className="inline-flex max-w-full items-center gap-2 rounded-full border border-pine/25 bg-gradient-to-l from-pine-soft to-brass-soft/60 px-4 py-1.5 text-xs font-bold leading-snug text-pine shadow-sm">
                 دورة المهندس عبد الرشيد حفصي في البرمجة والتداول بالذكاء الاصطناعي
               </span>
@@ -576,7 +576,7 @@ export default function Home() {
                 ))}
               </ul>
             </div>
-            <div className="pb-6 sm:pb-10">
+            <div className="min-w-0 pb-6 sm:pb-10">
               <CodeEditor />
               <CandleChart />
             </div>
@@ -1019,7 +1019,7 @@ export default function Home() {
 
             <div className="grid gap-6 lg:grid-cols-2">
               {/* بطاقة CCP */}
-              <article className="overflow-hidden rounded-2xl border border-line bg-cream p-6 sm:p-8">
+              <article className="min-w-0 overflow-hidden rounded-2xl border border-line bg-cream p-6 sm:p-8">
                 <div className="-mx-6 -mt-6 mb-5 flex items-center justify-center gap-2 bg-pine px-4 py-2.5 text-[12px] font-bold text-cream sm:-mx-8 sm:-mt-8">
                   <IconStar className="h-4 w-4 shrink-0 text-brass" />
                   خاص بالمستخدمين في الجزائر
@@ -1076,7 +1076,7 @@ export default function Home() {
               </article>
 
               {/* بطاقة USDT */}
-              <article className="flex flex-col rounded-2xl border border-line bg-cream p-6 sm:p-8">
+              <article className="flex min-w-0 flex-col rounded-2xl border border-line bg-cream p-6 sm:p-8">
                 <div className="flex items-center justify-between gap-3">
                   <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-pine-soft text-pine">
                     <IconGlobe className="h-5 w-5" />

@@ -55,7 +55,7 @@ export function CopyField({
       <code
         dir={dir}
         aria-label={ariaLabel}
-        className="min-w-0 flex-1 truncate px-3 py-2.5 font-mono text-[13px] leading-relaxed text-ink sm:text-sm"
+        className="min-w-0 flex-1 break-all px-3 py-2.5 font-mono text-[13px] leading-relaxed text-ink sm:text-sm"
         title={value}
       >
         {value}
