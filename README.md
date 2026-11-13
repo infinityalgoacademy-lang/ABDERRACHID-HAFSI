@@ -20,7 +20,7 @@ A professional Arabic-first (RTL) landing page for a hands-on course combining *
 
 ## ✨ Overview
 
-A **single-page** landing site built with the Next.js App Router, designed entirely for Arabic (RTL) using the **Cairo** typeface. It promotes a **3-month** online training course covering:
+A **Arabic-first** landing site built with the Next.js App Router, designed entirely for RTL using the **Cairo** typeface. It promotes a **3-month** online training course covering:
 
 - 🐍 **Programming** — from Python fundamentals to building real analysis tools
 - 🤖 **AI** — reading data, decision-making, and automating repetitive tasks
@@ -42,7 +42,8 @@ A **single-page** landing site built with the Next.js App Router, designed entir
 | ❓ **Interactive FAQ** | Accordion with smooth open/close animations (Radix UI) |
 | 📋 **One-click copy fields** | CCP and USDT payment fields with copy buttons |
 | 📱 **Fully responsive** | Mobile-first layout with a sticky bottom registration bar |
-| 🔍 **Full SEO** | Metadata, description, keywords, Open Graph, and robots |
+| 🔍 **Full SEO** | Per-page metadata, canonical URLs, Open Graph, Twitter cards, `sitemap.xml`, `robots.txt`, and JSON-LD structured data |
+| 🧩 **Multi-page** | Home landing page + About + Terms, sharing one header/footer and design system |
 | ⚡ **High performance** | App Router + Server Components + optimized fonts |
 
 ---
@@ -101,22 +102,41 @@ bun run start
 .
 ├── src/
 │   ├── app/
-│   │   ├── layout.tsx        # Fonts + Metadata + root layout
-│   │   ├── page.tsx          # The full page (all sections in one file)
+│   │   ├── layout.tsx        # Fonts + global metadata + JSON-LD
+│   │   ├── page.tsx          # Landing page (all sections)
+│   │   ├── about/page.tsx    # About the course & instructor
+│   │   ├── terms/page.tsx    # Terms & conditions
+│   │   ├── sitemap.ts        # Generated /sitemap.xml
+│   │   ├── robots.ts         # Generated /robots.txt
+│   │   ├── icon.svg          # Favicon
 │   │   └── globals.css       # Design system (colors, animations, tokens)
 │   ├── components/
+│   │   ├── site-header.tsx   # Shared header (nav + CTA)
+│   │   ├── site-footer.tsx   # Shared footer
+│   │   ├── page-hero.tsx     # Inner-page hero + breadcrumbs
+│   │   ├── json-ld.tsx       # Structured-data injector
 │   │   ├── icons.tsx         # Custom SVG icon set
 │   │   └── copy-field.tsx    # Copy-to-clipboard field
 │   └── lib/
+│       ├── site.ts           # Site config, nav, SEO metadata builder
+│       ├── schema.ts         # schema.org (JSON-LD) builders
 │       └── utils.ts          # Utilities (cn)
 ├── public/
-│   ├── logo.svg              # Site logo
-│   └── robots.txt            # Search engine config
+│   ├── og-image.png          # 1200×630 social share image
+│   └── logo.svg
 ├── prisma/                   # (from template) ready for future extensions
 ├── Caddyfile                 # Reverse proxy config for deployment
 ├── next.config.ts            # Next.js config (standalone)
 └── package.json
 ```
+
+### Pages
+
+| Route | Description |
+| --- | --- |
+| `/` | Landing page: hero, curriculum, instructor, FAQ, payment & registration |
+| `/about` | About the course, the methodology, the instructor, and the learning path |
+| `/terms` | Terms & conditions: registration, payment, refunds, IP rights, privacy, disclaimer |
 
 ### Landing page sections
 
@@ -153,6 +173,25 @@ All colors are defined as **design tokens** in `globals.css` via `@theme`:
 
 ---
 
+## 🔍 SEO
+
+Every page ships complete, crawlable metadata:
+
+| Item | Where | Notes |
+| --- | --- | --- |
+| **Title template** | `layout.tsx` | `%s | برمجة × ذكاء اصطناعي × تداول` |
+| **Canonical URLs** | per page | Resolved against `metadataBase` |
+| **Open Graph + Twitter** | per page | `summary_large_image` with a 1200×630 image |
+| **`sitemap.xml`** | `app/sitemap.ts` | All routes with priority + change frequency |
+| **`robots.txt`** | `app/robots.ts` | Allows crawling, blocks `/api/`, points to the sitemap |
+| **JSON-LD** | `lib/schema.ts` | `Organization`, `Person`, `WebSite`, `Course`, `FAQPage`, `BreadcrumbList`, `AboutPage`, `WebPage` |
+| **Favicon** | `app/icon.svg` | Generated from the brand mark |
+| **Semantic HTML** | all pages | One `h1` per page, ordered headings, `aria-label`s, breadcrumbs |
+
+> ⚙️ Set **`NEXT_PUBLIC_SITE_URL`** to your production domain so canonical URLs, the sitemap, and `robots.txt` use absolute URLs. On Vercel it is detected automatically.
+
+---
+
 ## 🌐 Deployment
 
 The project builds in **standalone** mode (lightweight, self-host ready):
@@ -164,6 +203,7 @@ bun run start          # starts the server
 
 - 🐳 `Caddyfile` is ready to route your domain through Caddy
 - ☁️ Also compatible with Vercel / Docker / any VPS
+- 🔗 Set `NEXT_PUBLIC_SITE_URL=https://your-domain.com` for correct canonical URLs and sitemap entries
 
 ---
 

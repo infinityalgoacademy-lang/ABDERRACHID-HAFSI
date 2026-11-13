@@ -24,32 +24,33 @@ import {
   IconTelegram,
   IconUser,
   IconYouTube,
-  LogoMark,
 } from "@/components/icons";
 import { CopyField } from "@/components/copy-field";
+import { JsonLd } from "@/components/json-ld";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { courseSchema, faqSchema, graph } from "@/lib/schema";
+import {
+  INSTRUCTOR_PHOTO,
+  TELEGRAM_HANDLE,
+  TELEGRAM_LINK as TG_LINK,
+  YOUTUBE_EMBED,
+  YOUTUBE_LINK,
+} from "@/lib/site";
 
 type IconType = ComponentType<SVGProps<SVGSVGElement>>;
 
 /* ——————————————————— بيانات ثابتة ——————————————————— */
 
-const TELEGRAM_HANDLE = "@King_arius_dz";
-const TG_LINK = `https://t.me/King_arius_dz?text=${encodeURIComponent(
-  "مرحباً، أريد التسجيل في دورة البرمجة والذكاء الاصطناعي في عالم التداول."
-)}`;
-
 const CCP_NUMBER = "10716064/45";
 const RIP_NUMBER = "00799999001071606445";
 const USDT_ADDRESS = "TFUSU7B7K3GNxr7P8PKkt8PpjtTeciskk3";
-
-const YOUTUBE_ID = "2CyHkAd3EL8";
-const YOUTUBE_LINK = `https://www.youtube.com/watch?v=${YOUTUBE_ID}`;
-const YOUTUBE_EMBED = `https://www.youtube-nocookie.com/embed/${YOUTUBE_ID}`;
 
 const TICKER_ITEMS = [
   "أساسيات بايثون",
@@ -484,42 +485,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-paper text-ink">
       {/* الشريط العلوي */}
-      <header className="sticky top-0 z-40 border-b border-line bg-paper/85 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-          <a href="#top" className="flex items-center gap-2.5">
-            <LogoMark className="h-8 w-8 shrink-0 text-pine" />
-            <span className="text-sm font-extrabold leading-tight sm:text-[15px]">
-              برمجة <span className="text-brass">×</span> ذكاء اصطناعي{" "}
-              <span className="text-brass">×</span> تداول
-            </span>
-          </a>
-          <nav
-            aria-label="روابط الصفحة"
-            className="hidden items-center gap-7 text-sm font-semibold text-ink-soft md:flex"
-          >
-            <a href="#learn" className="transition hover:text-pine">
-              المحتوى
-            </a>
-            <a href="#audience" className="transition hover:text-pine">
-              لمن الدورة؟
-            </a>
-            <a href="#details" className="transition hover:text-pine">
-              التفاصيل
-            </a>
-            <a href="#register" className="transition hover:text-pine">
-              التسجيل والدفع
-            </a>
-          </nav>
-          <a
-            href={TG_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden rounded-lg bg-pine px-4 py-2.5 text-sm font-bold text-cream transition hover:bg-pine-deep sm:inline-flex"
-          >
-            سجّل الآن
-          </a>
-        </div>
-      </header>
+      <SiteHeader onHome />
 
       <main id="top" className="flex-1">
         {/* ——— الهيرو ——— */}
@@ -814,9 +780,8 @@ export default function Home() {
             <div className="rounded-2xl border border-line bg-cream p-6 sm:p-9">
               <div className="flex flex-col gap-7 sm:flex-row sm:items-start">
                 <div className="mx-auto flex h-28 w-28 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-pine-soft ring-1 ring-pine/15 sm:mx-0 sm:ms-0">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="https://secure.gravatar.com/avatar/d7e16096bc6eed90eb0a180806e7af7abaf9d6960172f10c66e7efca70b6da23?d=identicon&s=512"
+                    src={INSTRUCTOR_PHOTO}
                     alt="صورة عبد الرشيد حفصي"
                     width={112}
                     height={112}
@@ -1103,47 +1068,7 @@ export default function Home() {
       </main>
 
       {/* ——— التذييل ——— */}
-      <footer className="mt-auto border-t border-ink/10 bg-ink text-cream/75">
-        <div className="mx-auto max-w-6xl px-4 pb-24 pt-10 sm:px-6 md:pb-10">
-          <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
-            <div className="flex items-center gap-2.5 text-cream">
-              <LogoMark className="h-7 w-7 shrink-0 text-pine" />
-              <span className="text-sm font-extrabold">
-                برمجة <span className="text-brass">×</span> ذكاء اصطناعي{" "}
-                <span className="text-brass">×</span> تداول
-              </span>
-            </div>
-            <nav
-              aria-label="روابط التذييل"
-              className="flex flex-wrap gap-x-6 gap-y-2 text-[13px] font-semibold"
-            >
-              <a href="#learn" className="transition hover:text-cream">
-                المحتوى
-              </a>
-              <a href="#audience" className="transition hover:text-cream">
-                لمن الدورة؟
-              </a>
-              <a href="#details" className="transition hover:text-cream">
-                التفاصيل
-              </a>
-              <a href="#faq" className="transition hover:text-cream">
-                الأسئلة الشائعة
-              </a>
-              <a href="#register" className="transition hover:text-cream">
-                التسجيل والدفع
-              </a>
-            </nav>
-          </div>
-          <p className="mt-7 text-xs leading-relaxed text-cream/45">
-            #البرمجة #الذكاء_الاصطناعي #التداول #المؤشرات_الفنية
-            #تحليل_البيانات #بايثون #دورة_تعليمية
-          </p>
-          <p className="mt-3 text-xs text-cream/45">
-            © 2026 دورة البرمجة والذكاء الاصطناعي في عالم التداول. جميع الحقوق
-            محفوظة.
-          </p>
-        </div>
-      </footer>
+      <SiteFooter onHome />
 
       {/* ——— شريط التسجيل الثابت للهاتف ——— */}
       <div className="fixed inset-x-0 bottom-0 z-50 border-t border-pine-deep bg-pine text-cream md:hidden">
@@ -1167,6 +1092,9 @@ export default function Home() {
           </a>
         </div>
       </div>
+
+      {/* ——— بيانات منظَّمة للدورة والأسئلة الشائعة ——— */}
+      <JsonLd data={graph(courseSchema(), faqSchema(FAQ))} />
     </div>
   );
 }
