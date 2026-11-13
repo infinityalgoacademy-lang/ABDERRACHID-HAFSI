@@ -916,7 +916,11 @@ export default function Home() {
 
             <div className="grid gap-6 lg:grid-cols-2">
               {/* بطاقة CCP */}
-              <article className="rounded-2xl border border-line bg-cream p-6 sm:p-8">
+              <article className="overflow-hidden rounded-2xl border border-line bg-cream p-6 sm:p-8">
+                <div className="-mx-6 -mt-6 mb-5 flex items-center justify-center gap-2 bg-pine px-4 py-2.5 text-[12px] font-bold text-cream sm:-mx-8 sm:-mt-8">
+                  <IconStar className="h-4 w-4 shrink-0 text-brass" />
+                  خاص بالمستخدمين في الجزائر
+                </div>
                 <div className="flex items-center justify-between gap-3">
                   <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-pine-soft text-pine">
                     <IconMail className="h-5 w-5" />
