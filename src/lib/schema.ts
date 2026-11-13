@@ -1,5 +1,8 @@
 import {
   absoluteUrl,
+  AFFILIATE_COMMISSION_VALUE,
+  AFFILIATE_RATE,
+  AFFILIATE_RATE_LABEL,
   COURSE_PRICE_CURRENCY,
   COURSE_PRICE_VALUE,
   INSTRUCTOR_PHOTO,
@@ -111,6 +114,31 @@ export function courseSchema() {
       courseMode: "online",
       courseWorkload: "PT4H",
       inLanguage: SITE_LANGUAGE,
+    },
+  };
+}
+
+export function affiliateProgramSchema() {
+  return {
+    "@type": "Service",
+    "@id": `${SITE_URL}/affiliate#program`,
+    name: "برنامج العمولة",
+    alternateName: `برنامج إحالة ${AFFILIATE_RATE_LABEL}`,
+    description: `برنامج عمولة اختياري يمنح المشارك ${AFFILIATE_RATE}% من سعر الدورة عن كل شخص يسجّل ويدفع عبر إحالته.`,
+    serviceType: "Affiliate program",
+    provider: { "@id": ORG_ID },
+    areaServed: "DZ",
+    availableChannel: {
+      "@type": "ServiceChannel",
+      serviceUrl: absoluteUrl("/affiliate"),
+    },
+    offers: {
+      "@type": "Offer",
+      category: "Commission",
+      price: AFFILIATE_COMMISSION_VALUE,
+      priceCurrency: COURSE_PRICE_CURRENCY,
+      availability: "https://schema.org/InStock",
+      url: absoluteUrl("/affiliate"),
     },
   };
 }

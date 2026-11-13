@@ -67,10 +67,21 @@ export const COURSE_PRICE_CURRENCY = "USD";
 export const COURSE_DURATION = "3 أشهر";
 export const COURSE_MODE = "أونلاين";
 
+/* ——————————————————— برنامج العمولة ——————————————————— */
+export const AFFILIATE_RATE = 25;
+export const AFFILIATE_RATE_LABEL = "25%";
+/** قيمة العمولة عن كل طالب مسجَّل = 25% من 80$ */
+export const AFFILIATE_COMMISSION_VALUE = "20";
+export const AFFILIATE_COMMISSION = "20$";
+
+export const AFFILIATE_LINK = `https://t.me/King_arius_dz?text=${encodeURIComponent(
+  "مرحباً، أريد الانضمام إلى برنامج العمولة (25%) وأحتاج تفاصيل الإحالة.",
+)}`;
+
 /* ——————————————————— التنقل ——————————————————— */
 export const NAV_LINKS = [
   { href: "/#learn", label: "المحتوى" },
-  { href: "/#audience", label: "لمن الدورة؟" },
+  { href: "/affiliate", label: "برنامج العمولة" },
   { href: "/about", label: "عن الدورة" },
   { href: "/terms", label: "الشروط والأحكام" },
 ];
@@ -81,6 +92,7 @@ export const FOOTER_LINKS = [
   { href: "/#details", label: "التفاصيل" },
   { href: "/#faq", label: "الأسئلة الشائعة" },
   { href: "/#register", label: "التسجيل والدفع" },
+  { href: "/affiliate", label: "برنامج العمولة" },
   { href: "/about", label: "عن الدورة" },
   { href: "/terms", label: "الشروط والأحكام" },
 ];

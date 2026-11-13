@@ -43,7 +43,7 @@ A **Arabic-first** landing site built with the Next.js App Router, designed enti
 | 📋 **One-click copy fields** | CCP and USDT payment fields with copy buttons |
 | 📱 **Fully responsive** | Mobile-first layout with a sticky bottom registration bar |
 | 🔍 **Full SEO** | Per-page metadata, canonical URLs, Open Graph, Twitter cards, `sitemap.xml`, `robots.txt`, and JSON-LD structured data |
-| 🧩 **Multi-page** | Home landing page + About + Terms, sharing one header/footer and design system |
+| 🧩 **Multi-page** | Home landing page + About + Affiliate + Terms, sharing one header/footer and design system |
 | ⚡ **High performance** | App Router + Server Components + optimized fonts |
 
 ---
@@ -105,6 +105,7 @@ bun run start
 │   │   ├── layout.tsx        # Fonts + global metadata + JSON-LD
 │   │   ├── page.tsx          # Landing page (all sections)
 │   │   ├── about/page.tsx    # About the course & instructor
+│   │   ├── affiliate/page.tsx # Affiliate program (25% commission)
 │   │   ├── terms/page.tsx    # Terms & conditions
 │   │   ├── sitemap.ts        # Generated /sitemap.xml
 │   │   ├── robots.ts         # Generated /robots.txt
@@ -134,9 +135,10 @@ bun run start
 
 | Route | Description |
 | --- | --- |
-| `/` | Landing page: hero, curriculum, instructor, FAQ, payment & registration |
+| `/` | Landing page: hero, curriculum, instructor, FAQ, affiliate program, payment & registration |
 | `/about` | About the course, the methodology, the instructor, and the learning path |
-| `/terms` | Terms & conditions: registration, payment, refunds, IP rights, privacy, disclaimer |
+| `/affiliate` | Affiliate program: earn 25% (20$) per referred student, how it works, rules |
+| `/terms` | Terms & conditions: registration, payment, refunds, affiliate program, IP rights, privacy, disclaimer |
 
 ### Landing page sections
 
@@ -150,8 +152,9 @@ bun run start
 | 04 | **What you get** | Course benefits |
 | 05 | **Instructor** | Bio of Abd Errachid Hafsi + Telegram link |
 | 06 | **Course details** | Date, duration, location, price |
-| 07 | **FAQ** | 6 interactive questions |
-| 08 | **Payment & registration** | CCP (Algérie Poste) + USDT (TRC20) + sign-up CTA |
+| 07 | **FAQ** | 7 interactive questions |
+| 08 | **Affiliate program** | Earn 25% (20$) per referred student + join CTA |
+| 09 | **Payment & registration** | CCP (Algérie Poste) + USDT (TRC20) + sign-up CTA |
 
 ---
 
@@ -184,7 +187,7 @@ Every page ships complete, crawlable metadata:
 | **Open Graph + Twitter** | per page | `summary_large_image` with a 1200×630 image |
 | **`sitemap.xml`** | `app/sitemap.ts` | All routes with priority + change frequency |
 | **`robots.txt`** | `app/robots.ts` | Allows crawling, blocks `/api/`, points to the sitemap |
-| **JSON-LD** | `lib/schema.ts` | `Organization`, `Person`, `WebSite`, `Course`, `FAQPage`, `BreadcrumbList`, `AboutPage`, `WebPage` |
+| **JSON-LD** | `lib/schema.ts` | `Organization`, `Person`, `WebSite`, `Course`, `FAQPage`, `Service` (affiliate), `BreadcrumbList`, `AboutPage`, `WebPage` |
 | **Favicon** | `app/icon.svg` | Generated from the brand mark |
 | **Semantic HTML** | all pages | One `h1` per page, ordered headings, `aria-label`s, breadcrumbs |
 

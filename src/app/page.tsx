@@ -1,4 +1,5 @@
 import type { ComponentType, SVGProps } from "react";
+import Link from "next/link";
 import {
   IconAlert,
   IconArrowLeft,
@@ -37,6 +38,9 @@ import {
 } from "@/components/ui/accordion";
 import { courseSchema, faqSchema, graph } from "@/lib/schema";
 import {
+  AFFILIATE_COMMISSION,
+  AFFILIATE_LINK,
+  AFFILIATE_RATE_LABEL,
   INSTRUCTOR_PHOTO,
   TELEGRAM_HANDLE,
   TELEGRAM_LINK as TG_LINK,
@@ -211,6 +215,29 @@ const FAQ: { q: string; a: string }[] = [
   {
     q: "كيف أسجل في الدورة؟",
     a: "راسلنا مباشرة عبر تيليجرام، ستجد زر التسجيل في قسم الدفع والتسجيل أدناه، وسنرشدك خطوة بخطوة: تأكيد مقعدك، الدفع، والانطلاق مع المجموعة.",
+  },
+  {
+    q: "هل هناك برنامج عمولة؟",
+    a: "نعم، يمكنك الانضمام إلى برنامج العمولة والحصول على 25% من سعر الدورة عن كل شخص يسجّل عبر إحالتك. التفاصيل الكاملة في صفحة برنامج العمولة.",
+  },
+];
+
+const AFFILIATE_STEPS: { title: string; desc: string }[] = [
+  {
+    title: "اطلب الانضمام",
+    desc: "راسلنا على تيليجرام وأخبرنا أنك تريد الانضمام. الانضمام مجاني وبدون شروط مسبقة.",
+  },
+  {
+    title: "استلم طريقة الإحالة",
+    desc: "نرسل لك طريقة الإحالة المعتمدة، وسنتابع بها التسجيلات القادمة منك.",
+  },
+  {
+    title: "انصح بالدورة",
+    desc: "شارك الدورة مع المهتمين بالبرمجة والذكاء الاصطناعي والتداول.",
+  },
+  {
+    title: "اقبض عمولتك",
+    desc: "بعد تسجيل الشخص ودفعه، تُحتسب لك عمولة 25% وتُدفع عبر CCP أو USDT.",
   },
 ];
 
@@ -905,11 +932,87 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ——— 08 الدفع والتسجيل ——— */}
-        <section id="register" className="scroll-mt-24 py-16 sm:py-24">
+        {/* ——— 08 برنامج العمولة ——— */}
+        <section
+          id="affiliate"
+          className="scroll-mt-24 border-y border-line bg-paper-deep/45 py-16 sm:py-24"
+        >
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <SectionHead
               no="08"
+              title="اربح 25% مع برنامج العمولة"
+              lead="انصح بالدورة واحصل على عمولة عن كل شخص يسجّل من إحالتك. بسيط، بدون شروط معقّدة."
+            />
+            <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+              <ol className="grid gap-5 sm:grid-cols-2">
+                {AFFILIATE_STEPS.map((step, i) => (
+                  <li
+                    key={step.title}
+                    className="rounded-2xl border border-line bg-cream p-6"
+                  >
+                    <span className="font-mono text-sm font-semibold text-brass">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="mt-3 text-[17px] font-bold">{step.title}</h3>
+                    <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">
+                      {step.desc}
+                    </p>
+                  </li>
+                ))}
+              </ol>
+
+              <div className="flex flex-col rounded-2xl border border-brass/30 bg-brass-soft/60 p-6 sm:p-8">
+                <span className="inline-flex w-fit items-center gap-2 rounded-full border border-brass/40 bg-paper px-3 py-1 text-[12px] font-bold text-brass">
+                  <IconStar className="h-3.5 w-3.5" />
+                  عمولة على كل إحالة
+                </span>
+                <p className="mt-5 font-mono text-5xl font-extrabold leading-none text-pine">
+                  {AFFILIATE_RATE_LABEL}
+                </p>
+                <p className="mt-3 text-[15px] font-bold">
+                  أي {AFFILIATE_COMMISSION} عن كل طالب يسجّل من إحالتك
+                </p>
+                <ul className="mt-6 grid gap-3">
+                  {[
+                    "بدون حد أقصى لعدد الإحالات",
+                    "تُحتسب بعد تأكيد دفع الطالب",
+                    "الدفع عبر CCP أو USDT",
+                  ].map((point) => (
+                    <li
+                      key={point}
+                      className="flex items-start gap-2.5 text-sm font-semibold"
+                    >
+                      <IconCheck className="mt-0.5 h-4 w-4 shrink-0 text-pine" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={AFFILIATE_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-7 inline-flex items-center justify-center gap-2.5 rounded-lg bg-pine px-6 py-3.5 text-sm font-bold text-cream shadow-[0_2px_0_0_#073426] transition hover:bg-pine-deep active:translate-y-px"
+                >
+                  <IconTelegram className="h-5 w-5" />
+                  انضم إلى برنامج العمولة
+                </a>
+                <Link
+                  href="/affiliate"
+                  className="mt-3 inline-flex items-center justify-center gap-2 rounded-lg border border-line bg-paper px-6 py-3 text-sm font-bold text-ink transition hover:border-pine/40 hover:text-pine"
+                >
+                  التفاصيل الكاملة
+                  <IconArrowLeft className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ——— 09 الدفع والتسجيل ——— */}
+        <section id="register" className="scroll-mt-24 py-16 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <SectionHead
+              no="09"
               title="الدفع والتسجيل"
               lead="اختر وسيلة الدفع المناسبة لك، بالدينار عبر بريد الجزائر أو بالعملة الرقمية USDT، ثم راسلنا عبر تيليجرام لتأكيد مقعدك."
             />
