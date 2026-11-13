@@ -41,6 +41,9 @@ import {
   AFFILIATE_COMMISSION,
   AFFILIATE_LINK,
   AFFILIATE_RATE_LABEL,
+  COURSE_DURATION,
+  COURSE_MODE,
+  COURSE_PRICE,
   INSTRUCTOR_PHOTO,
   TELEGRAM_HANDLE,
   TELEGRAM_LINK as TG_LINK,
@@ -1135,43 +1138,87 @@ export default function Home() {
             </div>
 
             {/* بانر التسجيل */}
-            <div className="mt-8 overflow-hidden rounded-2xl border border-pine/25 bg-pine-soft/70">
-              <div className="flex flex-col items-start gap-6 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
-                <div>
-                  <h3 className="text-xl font-extrabold sm:text-2xl">
-                    المقاعد محدودة، سجّل الآن وابدأ رحلتك نحو بناء أدواتك
-                    بنفسك.
+            <div className="relative mt-8 overflow-hidden rounded-2xl border border-pine-deep bg-pine-deep text-cream shadow-xl shadow-ink/25">
+              <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+                <div className="absolute inset-0 bg-[radial-gradient(#ffffff12_1px,transparent_1px)] [background-size:22px_22px]" />
+                <div className="absolute -left-24 -top-24 h-60 w-60 rounded-full bg-brass/20 blur-3xl" />
+                <div className="absolute -bottom-28 -right-20 h-60 w-60 rounded-full bg-pine/60 blur-3xl" />
+              </div>
+
+              <div className="relative grid gap-8 p-6 sm:p-9 lg:grid-cols-[1.35fr_1fr] lg:items-center">
+                {/* النص */}
+                <div className="min-w-0">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-brass/40 bg-brass/10 px-3 py-1 text-[12px] font-bold text-brass">
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brass opacity-75" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-brass" />
+                    </span>
+                    التسجيل مفتوح الآن · المقاعد محدودة
+                  </span>
+
+                  <h3 className="mt-5 text-2xl font-extrabold leading-snug sm:text-3xl">
+                    ابدأ رحلتك نحو بناء أدواتك الخاصة بنفسك.
                   </h3>
-                  <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">
-                    للتسجيل والاستفسار، راسلنا مباشرة عبر تيليجرام وسنجيبك على
-                    كل تفاصيل الدورة.
+                  <p className="mt-3 max-w-xl text-[15px] leading-loose text-cream/80">
+                    للتسجيل والاستفسار راسلنا مباشرة عبر تيليجرام، وسنجيبك على
+                    كل تفاصيل الدورة ونرافقك خطوة بخطوة حتى الانطلاق.
+                  </p>
+
+                  <ul className="mt-5 flex flex-wrap gap-2.5">
+                    {[
+                      { Icon: IconTag, label: COURSE_PRICE },
+                      { Icon: IconClock, label: COURSE_DURATION },
+                      { Icon: IconGlobe, label: COURSE_MODE },
+                    ].map(({ Icon, label }) => (
+                      <li
+                        key={label}
+                        className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.06] px-3 py-2 text-[13px] font-bold"
+                      >
+                        <Icon className="h-4 w-4 text-brass" />
+                        {label}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-5 flex items-start gap-2.5 rounded-lg border border-brass/30 border-e-4 border-e-brass bg-brass/10 px-3.5 py-3">
+                    <IconAlert className="mt-0.5 h-4.5 w-4.5 shrink-0 text-brass" />
+                    <div className="min-w-0">
+                      <p className="text-[13px] font-extrabold text-cream">
+                        ملاحظة للمستخدمين في الجزائر
+                      </p>
+                      <p className="mt-1 text-[13px] leading-relaxed text-cream/75">
+                        العملات الرقمية (USDT) محظورة في الجزائر، لذلك الدفع داخل
+                        الجزائر يكون بالدينار عبر بريد الجزائر (CCP)، ويبقى USDT
+                        متاحاً للمستخدمين خارج الجزائر.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* بطاقة التسجيل */}
+                <div className="flex flex-col gap-4 rounded-xl border border-white/10 bg-white/[0.05] p-5 backdrop-blur-sm sm:p-6">
+                  <p className="text-[11px] font-bold uppercase tracking-widest text-brass">
+                    تواصل مباشر
                   </p>
                   <p
                     dir="ltr"
-                    className="mt-3 font-mono text-base font-bold tracking-wide text-pine"
+                    className="text-lg font-bold tracking-wide text-cream"
                   >
                     {TELEGRAM_HANDLE}
                   </p>
-                  <p className="mt-4 flex items-start gap-2 rounded-lg bg-paper/70 px-3.5 py-2.5 text-[13px] leading-relaxed text-ink">
-                    <IconAlert className="mt-0.5 h-4 w-4 shrink-0 text-brass" />
-                    <span>
-                      <span className="font-extrabold">
-                        ملاحظة للمستخدمين في الجزائر:{" "}
-                      </span>
-                      العملات الرقمية (USDT) محظورة في الجزائر، لذلك الدفع
-                      بالدينار عبر بريد الجزائر (CCP) هو الخيار الخاص بكم.
-                    </span>
+                  <a
+                    href={TG_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2.5 rounded-lg bg-cream px-6 py-3.5 text-[15px] font-extrabold text-pine-deep shadow-[0_2px_0_0_#00000040] transition hover:bg-paper active:translate-y-px"
+                  >
+                    <IconTelegram className="h-5 w-5" />
+                    سجّل الآن عبر تيليجرام
+                  </a>
+                  <p className="text-[12px] leading-relaxed text-cream/60">
+                    نجيبك في أقرب وقت، ونؤكد مقعدك مباشرة بعد إتمام الدفع.
                   </p>
                 </div>
-                <a
-                  href={TG_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex shrink-0 items-center gap-2.5 rounded-lg bg-pine px-8 py-4 text-base font-bold text-cream shadow-[0_2px_0_0_#073426] transition hover:bg-pine-deep active:translate-y-px"
-                >
-                  <IconTelegram className="h-5 w-5" />
-                  سجّل الآن عبر تيليجرام
-                </a>
               </div>
             </div>
 
